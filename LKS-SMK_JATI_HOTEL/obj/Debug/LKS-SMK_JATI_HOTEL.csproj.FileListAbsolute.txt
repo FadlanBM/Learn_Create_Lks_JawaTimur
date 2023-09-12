@@ -11,3 +11,4 @@ C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS-SM
 C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS-SMK_JATI_HOTEL.csproj.CoreCompileInputs.cache
 C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS-SMK_JATI_HOTEL.exe
 C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS-SMK_JATI_HOTEL.pdb
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.FMasterRoomType.resources
