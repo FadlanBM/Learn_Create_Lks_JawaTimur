@@ -1,0 +1,13 @@
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\bin\Debug\LKS-SMK_JATI_HOTEL.exe.config
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\bin\Debug\LKS-SMK_JATI_HOTEL.exe
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\bin\Debug\LKS-SMK_JATI_HOTEL.pdb
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS-SMK_JATI_HOTEL.csproj.AssemblyReference.cache
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS-SMK_JATI_HOTEL.csproj.SuggestedBindingRedirects.cache
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.FLogin.resources
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.FMainAdmin.resources
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.FMainOffice.resources
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.Properties.Resources.resources
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS-SMK_JATI_HOTEL.csproj.GenerateResource.cache
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS-SMK_JATI_HOTEL.csproj.CoreCompileInputs.cache
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS-SMK_JATI_HOTEL.exe
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS-SMK_JATI_HOTEL.pdb
