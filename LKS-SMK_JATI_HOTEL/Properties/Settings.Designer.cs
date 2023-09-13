@@ -33,5 +33,16 @@ namespace LKS_SMK_JATI_HOTEL.Properties {
                 return ((string)(this["LKS_SMK_JATI_HOTEL_ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-FDMC7DB;Initial Catalog=LKS-SMK_JATI_HOTEL-;Integrated Securi" +
+            "ty=True")]
+        public string LKS_SMK_JATI_HOTEL_ConnectionString1 {
+            get {
+                return ((string)(this["LKS_SMK_JATI_HOTEL_ConnectionString1"]));
+            }
+        }
     }
 }

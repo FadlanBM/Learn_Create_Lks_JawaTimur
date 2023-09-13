@@ -72,7 +72,7 @@ namespace LKS_SMK_JATI_HOTEL
     #endregion
 		
 		public AppDbContextDataContext() : 
-				base(global::LKS_SMK_JATI_HOTEL.Properties.Settings.Default.LKS_SMK_JATI_HOTEL_ConnectionString, mappingSource)
+				base(global::LKS_SMK_JATI_HOTEL.Properties.Settings.Default.LKS_SMK_JATI_HOTEL_ConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}

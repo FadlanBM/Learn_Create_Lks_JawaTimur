@@ -58,7 +58,7 @@ namespace LKS_SMK_JATI_HOTEL
             var data=dbcontext.RoomTypes.Where(r=>r.ID==int.Parse(id)).FirstOrDefault();
             tb_name.Text = data.Name;
             tb_priceRoom.Text = data.RoomPrice.ToString();
-            up_capacity.Value=data.ca;
+            up_capacity.Value=data.Capacity;
             var nameImage = path + data.Photo;
             if (!File.Exists(nameImage))
             {
@@ -98,6 +98,7 @@ namespace LKS_SMK_JATI_HOTEL
         private void button2_Click(object sender, EventArgs e)
         {
             insertMode();
+            clearForm();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -169,6 +170,7 @@ namespace LKS_SMK_JATI_HOTEL
             }      
             else
             {
+                lanjut = false;
                 errorProvider1.SetError(tb_name,"");
             }
 
@@ -180,6 +182,7 @@ namespace LKS_SMK_JATI_HOTEL
             }
             else
             {
+                lanjut = false;
                 errorProvider1.SetError(up_capacity, "");
             }
 
@@ -191,6 +194,7 @@ namespace LKS_SMK_JATI_HOTEL
             }
             else
             {
+                lanjut = false;
                 errorProvider1.SetError(tb_priceRoom, "");
             }
 
@@ -201,6 +205,7 @@ namespace LKS_SMK_JATI_HOTEL
             }
             else
             {
+                lanjut = false;
                 errorProvider1.SetError(pictureBox1, "");
             }
 
@@ -229,10 +234,52 @@ namespace LKS_SMK_JATI_HOTEL
                 getData();
                 clearForm();
                 normalMode();
+                return;
             }
             if (button3.Enabled==true)
             {
-                MessageBox.Show("Udapte");
+                var nameImage=DateTime.Now.Ticks.ToString()+Path.GetFileName(ofd.FileName);
+                var data = dbcontext.RoomTypes.Where(r => r.ID == int.Parse(id)).FirstOrDefault();
+                var image = path + data.Photo;
+                if (File.Exists(image))
+                {
+                    File.Delete(image);
+                }
+               data.Name=tb_name.Text;
+                data.Capacity=(int)up_capacity.Value;
+                data.RoomPrice = int.Parse( tb_priceRoom.Text);
+                data.Photo = nameImage;
+                File.Copy(ofd.FileName, path + nameImage);
+                dbcontext.SubmitChanges();
+                MessageBox.Show("Berhasil Update data","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                getData();
+                normalMode();
+                clearForm() ;   
+                return;
+            }
+            if (button4.Enabled==true)
+            {
+                DialogResult dialog = MessageBox.Show("Apakah anda ingin menghapus data ini?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (DialogResult.Yes==dialog)
+                {
+                    var data = dbcontext.RoomTypes.Where(d => d.ID == int.Parse(id)).FirstOrDefault();
+                    var imageName=path+ data.Photo;
+                    if (data!=null)
+                    {
+                        if (File.Exists(imageName))
+                        {
+                            File.Delete(imageName);
+                        }
+                        var nameImage = path + data.Photo;
+                        dbcontext.RoomTypes.DeleteOnSubmit(data);
+                        dbcontext.SubmitChanges();
+                        MessageBox.Show("Berhasil Delete data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        getData();
+                        normalMode();
+                        clearForm();
+                        return;
+                    }
+                }
             }
         }
 
