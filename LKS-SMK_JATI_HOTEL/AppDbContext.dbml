@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LKS-SMK_JATI_HOTEL-" Class="AppDbContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-8UJEI4N\MSSQLSERVER01;Initial Catalog=LKS-SMK_JATI_HOTEL-;Integrated Security=True" SettingsObjectName="LKS_SMK_JATI_HOTEL.Properties.Settings" SettingsPropertyName="LKS_SMK_JATI_HOTEL_ConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-FDMC7DB;Initial Catalog=LKS-SMK_JATI_HOTEL-;Integrated Security=True" SettingsObjectName="LKS_SMK_JATI_HOTEL.Properties.Settings" SettingsPropertyName="LKS_SMK_JATI_HOTEL_ConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Customer" Member="Customers">
     <Type Name="Customer">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -26,7 +26,7 @@
     <Type Name="Employee">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Address" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
@@ -67,6 +67,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="RequestPrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CompensationFee" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Item_ReservationCheckOut" Member="ReservationCheckOuts" ThisKey="ID" OtherKey="ItemID" Type="ReservationCheckOut" />
       <Association Name="Item_ReservationRequestItem" Member="ReservationRequestItem" ThisKey="ID" OtherKey="ID" Type="ReservationRequestItem" Cardinality="One" />
     </Type>
   </Table>
@@ -74,6 +75,7 @@
     <Type Name="ItemStatus">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ItemStatus_ReservationCheckOut" Member="ReservationCheckOuts" ThisKey="ID" OtherKey="ItemStatusID" Type="ReservationCheckOut" />
     </Type>
   </Table>
   <Table Name="dbo.Job" Member="Jobs">
@@ -103,6 +105,9 @@
       <Column Name="ItemStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Qty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TotalCharge" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Item_ReservationCheckOut" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="ItemStatus_ReservationCheckOut" Member="ItemStatus" ThisKey="ItemStatusID" OtherKey="ID" Type="ItemStatus" IsForeignKey="true" />
+      <Association Name="ReservationRoom_ReservationCheckOut" Member="ReservationRoom" ThisKey="ReservationRoomID" OtherKey="ID" Type="ReservationRoom" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ReservationRequestItem" Member="ReservationRequestItems">
@@ -127,6 +132,7 @@
       <Column Name="CheckInDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CheckOutDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="ReservationRoom_FDCheckOut" Member="FDCheckOuts" ThisKey="ID" OtherKey="ReservationRoomID" Type="FDCheckOut" />
+      <Association Name="ReservationRoom_ReservationCheckOut" Member="ReservationCheckOuts" ThisKey="ID" OtherKey="ReservationRoomID" Type="ReservationCheckOut" />
       <Association Name="ReservationRoom_ReservationRequestItem" Member="ReservationRequestItems" ThisKey="ID" OtherKey="ReservationRoomID" Type="ReservationRequestItem" />
       <Association Name="Reservation_ReservationRoom" Member="Reservation" ThisKey="ReservationID" OtherKey="ID" Type="Reservation" IsForeignKey="true" />
       <Association Name="Room_ReservationRoom" Member="Room" ThisKey="RoomID" OtherKey="ID" Type="Room" IsForeignKey="true" />

@@ -54,9 +54,9 @@ namespace LKS_SMK_JATI_HOTEL
     partial void InsertJob(Job instance);
     partial void UpdateJob(Job instance);
     partial void DeleteJob(Job instance);
-    partial void InsertReservation(FReservation instance);
-    partial void UpdateReservation(FReservation instance);
-    partial void DeleteReservation(FReservation instance);
+    partial void InsertReservation(Reservation instance);
+    partial void UpdateReservation(Reservation instance);
+    partial void DeleteReservation(Reservation instance);
     partial void InsertReservationCheckOut(ReservationCheckOut instance);
     partial void UpdateReservationCheckOut(ReservationCheckOut instance);
     partial void DeleteReservationCheckOut(ReservationCheckOut instance);
@@ -72,7 +72,7 @@ namespace LKS_SMK_JATI_HOTEL
     #endregion
 		
 		public AppDbContextDataContext() : 
-				base(global::LKS_SMK_JATI_HOTEL.Properties.Settings.Default.LKS_SMK_JATI_HOTEL_ConnectionString, mappingSource)
+				base(global::LKS_SMK_JATI_HOTEL.Properties.Settings.Default.LKS_SMK_JATI_HOTEL_ConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -165,11 +165,11 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 		}
 		
-		public System.Data.Linq.Table<FReservation> Reservations
+		public System.Data.Linq.Table<Reservation> Reservations
 		{
 			get
 			{
-				return this.GetTable<FReservation>();
+				return this.GetTable<Reservation>();
 			}
 		}
 		
@@ -226,7 +226,7 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		private System.Nullable<int> _Age;
 		
-		private EntitySet<FReservation> _Reservations;
+		private EntitySet<Reservation> _Reservations;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -250,7 +250,7 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		public Customer()
 		{
-			this._Reservations = new EntitySet<FReservation>(new Action<FReservation>(this.attach_Reservations), new Action<FReservation>(this.detach_Reservations));
+			this._Reservations = new EntitySet<Reservation>(new Action<Reservation>(this.attach_Reservations), new Action<Reservation>(this.detach_Reservations));
 			OnCreated();
 		}
 		
@@ -395,7 +395,7 @@ namespace LKS_SMK_JATI_HOTEL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Reservation", Storage="_Reservations", ThisKey="ID", OtherKey="CustomerID")]
-		public EntitySet<FReservation> Reservations
+		public EntitySet<Reservation> Reservations
 		{
 			get
 			{
@@ -427,13 +427,13 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 		}
 		
-		private void attach_Reservations(FReservation entity)
+		private void attach_Reservations(Reservation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Customer = this;
 		}
 		
-		private void detach_Reservations(FReservation entity)
+		private void detach_Reservations(Reservation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Customer = null;
@@ -652,7 +652,7 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		private EntitySet<FDCheckOut> _FDCheckOuts;
 		
-		private EntitySet<FReservation> _Reservations;
+		private EntitySet<Reservation> _Reservations;
 		
 		private EntityRef<Job> _Job;
 		
@@ -683,7 +683,7 @@ namespace LKS_SMK_JATI_HOTEL
 		public Employee()
 		{
 			this._FDCheckOuts = new EntitySet<FDCheckOut>(new Action<FDCheckOut>(this.attach_FDCheckOuts), new Action<FDCheckOut>(this.detach_FDCheckOuts));
-			this._Reservations = new EntitySet<FReservation>(new Action<FReservation>(this.attach_Reservations), new Action<FReservation>(this.detach_Reservations));
+			this._Reservations = new EntitySet<Reservation>(new Action<Reservation>(this.attach_Reservations), new Action<Reservation>(this.detach_Reservations));
 			this._Job = default(EntityRef<Job>);
 			OnCreated();
 		}
@@ -728,7 +728,7 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string Password
 		{
 			get
@@ -886,7 +886,7 @@ namespace LKS_SMK_JATI_HOTEL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Reservation", Storage="_Reservations", ThisKey="ID", OtherKey="EmployeeID")]
-		public EntitySet<FReservation> Reservations
+		public EntitySet<Reservation> Reservations
 		{
 			get
 			{
@@ -964,13 +964,13 @@ namespace LKS_SMK_JATI_HOTEL
 			entity.Employee = null;
 		}
 		
-		private void attach_Reservations(FReservation entity)
+		private void attach_Reservations(Reservation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Employee = this;
 		}
 		
-		private void detach_Reservations(FReservation entity)
+		private void detach_Reservations(Reservation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Employee = null;
@@ -1482,6 +1482,8 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		private System.Nullable<int> _CompensationFee;
 		
+		private EntitySet<ReservationCheckOut> _ReservationCheckOuts;
+		
 		private EntityRef<ReservationRequestItem> _ReservationRequestItem;
 		
     #region Extensibility Method Definitions
@@ -1500,6 +1502,7 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		public Item()
 		{
+			this._ReservationCheckOuts = new EntitySet<ReservationCheckOut>(new Action<ReservationCheckOut>(this.attach_ReservationCheckOuts), new Action<ReservationCheckOut>(this.detach_ReservationCheckOuts));
 			this._ReservationRequestItem = default(EntityRef<ReservationRequestItem>);
 			OnCreated();
 		}
@@ -1584,6 +1587,19 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_ReservationCheckOut", Storage="_ReservationCheckOuts", ThisKey="ID", OtherKey="ItemID")]
+		public EntitySet<ReservationCheckOut> ReservationCheckOuts
+		{
+			get
+			{
+				return this._ReservationCheckOuts;
+			}
+			set
+			{
+				this._ReservationCheckOuts.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_ReservationRequestItem", Storage="_ReservationRequestItem", ThisKey="ID", OtherKey="ID", IsUnique=true, IsForeignKey=false)]
 		public ReservationRequestItem ReservationRequestItem
 		{
@@ -1632,6 +1648,18 @@ namespace LKS_SMK_JATI_HOTEL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_ReservationCheckOuts(ReservationCheckOut entity)
+		{
+			this.SendPropertyChanging();
+			entity.Item = this;
+		}
+		
+		private void detach_ReservationCheckOuts(ReservationCheckOut entity)
+		{
+			this.SendPropertyChanging();
+			entity.Item = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ItemStatus")]
@@ -1643,6 +1671,8 @@ namespace LKS_SMK_JATI_HOTEL
 		private int _ID;
 		
 		private string _Name;
+		
+		private EntitySet<ReservationCheckOut> _ReservationCheckOuts;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1656,6 +1686,7 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		public ItemStatus()
 		{
+			this._ReservationCheckOuts = new EntitySet<ReservationCheckOut>(new Action<ReservationCheckOut>(this.attach_ReservationCheckOuts), new Action<ReservationCheckOut>(this.detach_ReservationCheckOuts));
 			OnCreated();
 		}
 		
@@ -1699,6 +1730,19 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ItemStatus_ReservationCheckOut", Storage="_ReservationCheckOuts", ThisKey="ID", OtherKey="ItemStatusID")]
+		public EntitySet<ReservationCheckOut> ReservationCheckOuts
+		{
+			get
+			{
+				return this._ReservationCheckOuts;
+			}
+			set
+			{
+				this._ReservationCheckOuts.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1717,6 +1761,18 @@ namespace LKS_SMK_JATI_HOTEL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_ReservationCheckOuts(ReservationCheckOut entity)
+		{
+			this.SendPropertyChanging();
+			entity.ItemStatus = this;
+		}
+		
+		private void detach_ReservationCheckOuts(ReservationCheckOut entity)
+		{
+			this.SendPropertyChanging();
+			entity.ItemStatus = null;
 		}
 	}
 	
@@ -1835,7 +1891,7 @@ namespace LKS_SMK_JATI_HOTEL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Reservation")]
-	public partial class FReservation : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Reservation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -1872,7 +1928,7 @@ namespace LKS_SMK_JATI_HOTEL
     partial void OnBookingCodeChanged();
     #endregion
 		
-		public FReservation()
+		public Reservation()
 		{
 			this._ReservationRooms = new EntitySet<ReservationRoom>(new Action<ReservationRoom>(this.attach_ReservationRooms), new Action<ReservationRoom>(this.detach_ReservationRooms));
 			this._Customer = default(EntityRef<Customer>);
@@ -2120,6 +2176,12 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		private System.Nullable<int> _TotalCharge;
 		
+		private EntityRef<Item> _Item;
+		
+		private EntityRef<ItemStatus> _ItemStatus;
+		
+		private EntityRef<ReservationRoom> _ReservationRoom;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2140,6 +2202,9 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		public ReservationCheckOut()
 		{
+			this._Item = default(EntityRef<Item>);
+			this._ItemStatus = default(EntityRef<ItemStatus>);
+			this._ReservationRoom = default(EntityRef<ReservationRoom>);
 			OnCreated();
 		}
 		
@@ -2174,6 +2239,10 @@ namespace LKS_SMK_JATI_HOTEL
 			{
 				if ((this._ReservationRoomID != value))
 				{
+					if (this._ReservationRoom.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnReservationRoomIDChanging(value);
 					this.SendPropertyChanging();
 					this._ReservationRoomID = value;
@@ -2194,6 +2263,10 @@ namespace LKS_SMK_JATI_HOTEL
 			{
 				if ((this._ItemID != value))
 				{
+					if (this._Item.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnItemIDChanging(value);
 					this.SendPropertyChanging();
 					this._ItemID = value;
@@ -2214,6 +2287,10 @@ namespace LKS_SMK_JATI_HOTEL
 			{
 				if ((this._ItemStatusID != value))
 				{
+					if (this._ItemStatus.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnItemStatusIDChanging(value);
 					this.SendPropertyChanging();
 					this._ItemStatusID = value;
@@ -2259,6 +2336,108 @@ namespace LKS_SMK_JATI_HOTEL
 					this._TotalCharge = value;
 					this.SendPropertyChanged("TotalCharge");
 					this.OnTotalChargeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_ReservationCheckOut", Storage="_Item", ThisKey="ItemID", OtherKey="ID", IsForeignKey=true)]
+		public Item Item
+		{
+			get
+			{
+				return this._Item.Entity;
+			}
+			set
+			{
+				Item previousValue = this._Item.Entity;
+				if (((previousValue != value) 
+							|| (this._Item.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Item.Entity = null;
+						previousValue.ReservationCheckOuts.Remove(this);
+					}
+					this._Item.Entity = value;
+					if ((value != null))
+					{
+						value.ReservationCheckOuts.Add(this);
+						this._ItemID = value.ID;
+					}
+					else
+					{
+						this._ItemID = default(int);
+					}
+					this.SendPropertyChanged("Item");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ItemStatus_ReservationCheckOut", Storage="_ItemStatus", ThisKey="ItemStatusID", OtherKey="ID", IsForeignKey=true)]
+		public ItemStatus ItemStatus
+		{
+			get
+			{
+				return this._ItemStatus.Entity;
+			}
+			set
+			{
+				ItemStatus previousValue = this._ItemStatus.Entity;
+				if (((previousValue != value) 
+							|| (this._ItemStatus.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ItemStatus.Entity = null;
+						previousValue.ReservationCheckOuts.Remove(this);
+					}
+					this._ItemStatus.Entity = value;
+					if ((value != null))
+					{
+						value.ReservationCheckOuts.Add(this);
+						this._ItemStatusID = value.ID;
+					}
+					else
+					{
+						this._ItemStatusID = default(int);
+					}
+					this.SendPropertyChanged("ItemStatus");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ReservationRoom_ReservationCheckOut", Storage="_ReservationRoom", ThisKey="ReservationRoomID", OtherKey="ID", IsForeignKey=true)]
+		public ReservationRoom ReservationRoom
+		{
+			get
+			{
+				return this._ReservationRoom.Entity;
+			}
+			set
+			{
+				ReservationRoom previousValue = this._ReservationRoom.Entity;
+				if (((previousValue != value) 
+							|| (this._ReservationRoom.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ReservationRoom.Entity = null;
+						previousValue.ReservationCheckOuts.Remove(this);
+					}
+					this._ReservationRoom.Entity = value;
+					if ((value != null))
+					{
+						value.ReservationCheckOuts.Add(this);
+						this._ReservationRoomID = value.ID;
+					}
+					else
+					{
+						this._ReservationRoomID = default(int);
+					}
+					this.SendPropertyChanged("ReservationRoom");
 				}
 			}
 		}
@@ -2548,9 +2727,11 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		private EntitySet<FDCheckOut> _FDCheckOuts;
 		
+		private EntitySet<ReservationCheckOut> _ReservationCheckOuts;
+		
 		private EntitySet<ReservationRequestItem> _ReservationRequestItems;
 		
-		private EntityRef<FReservation> _Reservation;
+		private EntityRef<Reservation> _Reservation;
 		
 		private EntityRef<Room> _Room;
 		
@@ -2579,8 +2760,9 @@ namespace LKS_SMK_JATI_HOTEL
 		public ReservationRoom()
 		{
 			this._FDCheckOuts = new EntitySet<FDCheckOut>(new Action<FDCheckOut>(this.attach_FDCheckOuts), new Action<FDCheckOut>(this.detach_FDCheckOuts));
+			this._ReservationCheckOuts = new EntitySet<ReservationCheckOut>(new Action<ReservationCheckOut>(this.attach_ReservationCheckOuts), new Action<ReservationCheckOut>(this.detach_ReservationCheckOuts));
 			this._ReservationRequestItems = new EntitySet<ReservationRequestItem>(new Action<ReservationRequestItem>(this.attach_ReservationRequestItems), new Action<ReservationRequestItem>(this.detach_ReservationRequestItems));
-			this._Reservation = default(EntityRef<FReservation>);
+			this._Reservation = default(EntityRef<Reservation>);
 			this._Room = default(EntityRef<Room>);
 			OnCreated();
 		}
@@ -2766,6 +2948,19 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ReservationRoom_ReservationCheckOut", Storage="_ReservationCheckOuts", ThisKey="ID", OtherKey="ReservationRoomID")]
+		public EntitySet<ReservationCheckOut> ReservationCheckOuts
+		{
+			get
+			{
+				return this._ReservationCheckOuts;
+			}
+			set
+			{
+				this._ReservationCheckOuts.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ReservationRoom_ReservationRequestItem", Storage="_ReservationRequestItems", ThisKey="ID", OtherKey="ReservationRoomID")]
 		public EntitySet<ReservationRequestItem> ReservationRequestItems
 		{
@@ -2780,7 +2975,7 @@ namespace LKS_SMK_JATI_HOTEL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Reservation_ReservationRoom", Storage="_Reservation", ThisKey="ReservationID", OtherKey="ID", IsForeignKey=true)]
-		public FReservation Reservation
+		public Reservation Reservation
 		{
 			get
 			{
@@ -2788,7 +2983,7 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 			set
 			{
-				FReservation previousValue = this._Reservation.Entity;
+				Reservation previousValue = this._Reservation.Entity;
 				if (((previousValue != value) 
 							|| (this._Reservation.HasLoadedOrAssignedValue == false)))
 				{
@@ -2874,6 +3069,18 @@ namespace LKS_SMK_JATI_HOTEL
 		}
 		
 		private void detach_FDCheckOuts(FDCheckOut entity)
+		{
+			this.SendPropertyChanging();
+			entity.ReservationRoom = null;
+		}
+		
+		private void attach_ReservationCheckOuts(ReservationCheckOut entity)
+		{
+			this.SendPropertyChanging();
+			entity.ReservationRoom = this;
+		}
+		
+		private void detach_ReservationCheckOuts(ReservationCheckOut entity)
 		{
 			this.SendPropertyChanging();
 			entity.ReservationRoom = null;

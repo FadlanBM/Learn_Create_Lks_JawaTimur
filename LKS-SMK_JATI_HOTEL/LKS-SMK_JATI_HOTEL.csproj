@@ -106,6 +106,12 @@
     <Compile Include="FMasterItem.Designer.cs">
       <DependentUpon>FMasterItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="FTestReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTestReservation.Designer.cs">
+      <DependentUpon>FTestReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FEmployee.resx">
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FMasterRoomType.resx">
       <DependentUpon>FMasterRoomType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTestReservation.resx">
+      <DependentUpon>FTestReservation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

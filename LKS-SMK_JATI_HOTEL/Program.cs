@@ -16,7 +16,7 @@ namespace LKS_SMK_JATI_HOTEL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FMainReservation());
+            Application.Run(new FTestReservation());
         }
     }
 }

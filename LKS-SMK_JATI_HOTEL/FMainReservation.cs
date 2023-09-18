@@ -185,37 +185,37 @@ namespace LKS_SMK_JATI_HOTEL
             foreach (DataGridViewRow item in dataGrid_Customer.Rows)
             {
                 var x = (DataGridViewCheckBoxCell)item.Cells[0];
-                if (Convert.ToBoolean(item.Cells[0].Value)==true)
+                if (Convert.ToBoolean(item.Cells[0].Value) == true)
                 {
                     customerId = item.Cells[1].Value.ToString();
                 }
             }
 
-            FReservation reservation = new FReservation();
+            Reservation reservation = new Reservation();
             reservation.CustomerID = Convert.ToInt32(customerId);
             reservation.EmployeeID = 6;
-            reservation.DateTime=DateTime.Now;
-            reservation.BookingCode = getItem().ToUpper().Substring(0,6);
+            reservation.DateTime = DateTime.Now;
+            reservation.BookingCode = getItem().ToUpper().Substring(0, 6);
             dbcontext.Reservations.InsertOnSubmit(reservation);
             dbcontext.SubmitChanges();
 
 
             foreach (DataGridViewRow item in datagrid_select_room.Rows)
             {
-               
+
                 var room_number = item.Cells[0].Value.ToString();
                 var room_floor = item.Cells[1].Value.ToString();
                 var room_price = item.Cells[2].Value;
                 var roomid = dbcontext.Rooms.Where(r => r.RoomNumber == room_number).FirstOrDefault();
-                var desc = item.Cells[3].Value.ToString();                                
-                ReservationRoom room=new ReservationRoom();
+                var desc = item.Cells[3].Value.ToString();
+                ReservationRoom room = new ReservationRoom();
                 room.ReservationID = reservation.ID;
                 room.RoomID = roomid.ID;
                 room.CheckInDateTime = dt_checkIn.Value;
-                room.CheckOutDateTime=dt_checkOut.Value;
+                room.CheckOutDateTime = dt_checkOut.Value;
                 var date = dt_checkOut.Value - dt_checkIn.Value;
-                room.DurationNights=date.Days;
-                    room.RoomPrice =Convert.ToInt32( room_price);
+                room.DurationNights = date.Days;
+                room.RoomPrice = Convert.ToInt32(room_price);
                 dbcontext.ReservationRooms.InsertOnSubmit(room);
                 dbcontext.SubmitChanges();
                 MessageBox.Show("Berhassil save");
