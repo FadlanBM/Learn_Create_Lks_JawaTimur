@@ -54,9 +54,9 @@ namespace LKS_SMK_JATI_HOTEL
     partial void InsertJob(Job instance);
     partial void UpdateJob(Job instance);
     partial void DeleteJob(Job instance);
-    partial void InsertReservation(Reservation instance);
-    partial void UpdateReservation(Reservation instance);
-    partial void DeleteReservation(Reservation instance);
+    partial void InsertReservation(FReservation instance);
+    partial void UpdateReservation(FReservation instance);
+    partial void DeleteReservation(FReservation instance);
     partial void InsertReservationCheckOut(ReservationCheckOut instance);
     partial void UpdateReservationCheckOut(ReservationCheckOut instance);
     partial void DeleteReservationCheckOut(ReservationCheckOut instance);
@@ -72,7 +72,7 @@ namespace LKS_SMK_JATI_HOTEL
     #endregion
 		
 		public AppDbContextDataContext() : 
-				base(global::LKS_SMK_JATI_HOTEL.Properties.Settings.Default.LKS_SMK_JATI_HOTEL_ConnectionString1, mappingSource)
+				base(global::LKS_SMK_JATI_HOTEL.Properties.Settings.Default.LKS_SMK_JATI_HOTEL_ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -165,11 +165,11 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 		}
 		
-		public System.Data.Linq.Table<Reservation> Reservations
+		public System.Data.Linq.Table<FReservation> Reservations
 		{
 			get
 			{
-				return this.GetTable<Reservation>();
+				return this.GetTable<FReservation>();
 			}
 		}
 		
@@ -226,7 +226,7 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		private System.Nullable<int> _Age;
 		
-		private EntitySet<Reservation> _Reservations;
+		private EntitySet<FReservation> _Reservations;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -250,7 +250,7 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		public Customer()
 		{
-			this._Reservations = new EntitySet<Reservation>(new Action<Reservation>(this.attach_Reservations), new Action<Reservation>(this.detach_Reservations));
+			this._Reservations = new EntitySet<FReservation>(new Action<FReservation>(this.attach_Reservations), new Action<FReservation>(this.detach_Reservations));
 			OnCreated();
 		}
 		
@@ -395,7 +395,7 @@ namespace LKS_SMK_JATI_HOTEL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Reservation", Storage="_Reservations", ThisKey="ID", OtherKey="CustomerID")]
-		public EntitySet<Reservation> Reservations
+		public EntitySet<FReservation> Reservations
 		{
 			get
 			{
@@ -427,13 +427,13 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 		}
 		
-		private void attach_Reservations(Reservation entity)
+		private void attach_Reservations(FReservation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Customer = this;
 		}
 		
-		private void detach_Reservations(Reservation entity)
+		private void detach_Reservations(FReservation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Customer = null;
@@ -652,7 +652,7 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		private EntitySet<FDCheckOut> _FDCheckOuts;
 		
-		private EntitySet<Reservation> _Reservations;
+		private EntitySet<FReservation> _Reservations;
 		
 		private EntityRef<Job> _Job;
 		
@@ -683,7 +683,7 @@ namespace LKS_SMK_JATI_HOTEL
 		public Employee()
 		{
 			this._FDCheckOuts = new EntitySet<FDCheckOut>(new Action<FDCheckOut>(this.attach_FDCheckOuts), new Action<FDCheckOut>(this.detach_FDCheckOuts));
-			this._Reservations = new EntitySet<Reservation>(new Action<Reservation>(this.attach_Reservations), new Action<Reservation>(this.detach_Reservations));
+			this._Reservations = new EntitySet<FReservation>(new Action<FReservation>(this.attach_Reservations), new Action<FReservation>(this.detach_Reservations));
 			this._Job = default(EntityRef<Job>);
 			OnCreated();
 		}
@@ -728,7 +728,7 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
 		public string Password
 		{
 			get
@@ -886,7 +886,7 @@ namespace LKS_SMK_JATI_HOTEL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Reservation", Storage="_Reservations", ThisKey="ID", OtherKey="EmployeeID")]
-		public EntitySet<Reservation> Reservations
+		public EntitySet<FReservation> Reservations
 		{
 			get
 			{
@@ -964,13 +964,13 @@ namespace LKS_SMK_JATI_HOTEL
 			entity.Employee = null;
 		}
 		
-		private void attach_Reservations(Reservation entity)
+		private void attach_Reservations(FReservation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Employee = this;
 		}
 		
-		private void detach_Reservations(Reservation entity)
+		private void detach_Reservations(FReservation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Employee = null;
@@ -1835,7 +1835,7 @@ namespace LKS_SMK_JATI_HOTEL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Reservation")]
-	public partial class Reservation : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class FReservation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -1872,7 +1872,7 @@ namespace LKS_SMK_JATI_HOTEL
     partial void OnBookingCodeChanged();
     #endregion
 		
-		public Reservation()
+		public FReservation()
 		{
 			this._ReservationRooms = new EntitySet<ReservationRoom>(new Action<ReservationRoom>(this.attach_ReservationRooms), new Action<ReservationRoom>(this.detach_ReservationRooms));
 			this._Customer = default(EntityRef<Customer>);
@@ -2550,7 +2550,7 @@ namespace LKS_SMK_JATI_HOTEL
 		
 		private EntitySet<ReservationRequestItem> _ReservationRequestItems;
 		
-		private EntityRef<Reservation> _Reservation;
+		private EntityRef<FReservation> _Reservation;
 		
 		private EntityRef<Room> _Room;
 		
@@ -2580,7 +2580,7 @@ namespace LKS_SMK_JATI_HOTEL
 		{
 			this._FDCheckOuts = new EntitySet<FDCheckOut>(new Action<FDCheckOut>(this.attach_FDCheckOuts), new Action<FDCheckOut>(this.detach_FDCheckOuts));
 			this._ReservationRequestItems = new EntitySet<ReservationRequestItem>(new Action<ReservationRequestItem>(this.attach_ReservationRequestItems), new Action<ReservationRequestItem>(this.detach_ReservationRequestItems));
-			this._Reservation = default(EntityRef<Reservation>);
+			this._Reservation = default(EntityRef<FReservation>);
 			this._Room = default(EntityRef<Room>);
 			OnCreated();
 		}
@@ -2780,7 +2780,7 @@ namespace LKS_SMK_JATI_HOTEL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Reservation_ReservationRoom", Storage="_Reservation", ThisKey="ReservationID", OtherKey="ID", IsForeignKey=true)]
-		public Reservation Reservation
+		public FReservation Reservation
 		{
 			get
 			{
@@ -2788,7 +2788,7 @@ namespace LKS_SMK_JATI_HOTEL
 			}
 			set
 			{
-				Reservation previousValue = this._Reservation.Entity;
+				FReservation previousValue = this._Reservation.Entity;
 				if (((previousValue != value) 
 							|| (this._Reservation.HasLoadedOrAssignedValue == false)))
 				{

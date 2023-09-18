@@ -27,3 +27,8 @@ D:\htdocs\Learn_Create_Lks_JawaTimur\LKS-SMK_JATI_HOTEL\bin\Debug\LKS-SMK_JATI_H
 D:\htdocs\Learn_Create_Lks_JawaTimur\LKS-SMK_JATI_HOTEL\bin\Debug\LKS-SMK_JATI_HOTEL.exe
 D:\htdocs\Learn_Create_Lks_JawaTimur\LKS-SMK_JATI_HOTEL\bin\Debug\LKS-SMK_JATI_HOTEL.pdb
 D:\htdocs\Learn_Create_Lks_JawaTimur\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.FMasterRoom.resources
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.FEmployee.resources
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.FMasterRoom.resources
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.FMasterItem.resources
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.FMasterFoodDrink.resources
+C:\laragon\www\Desktop_c#\LKS-SMK_JATI_HOTEL\LKS-SMK_JATI_HOTEL\obj\Debug\LKS_SMK_JATI_HOTEL.FMainReservation.resources

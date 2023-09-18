@@ -70,6 +70,18 @@
     <Compile Include="FMainAdmin.Designer.cs">
       <DependentUpon>FMainAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FMainReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMainReservation.Designer.cs">
+      <DependentUpon>FMainReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FMasterFoodDrink.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMasterFoodDrink.Designer.cs">
+      <DependentUpon>FMasterFoodDrink.cs</DependentUpon>
+    </Compile>
     <Compile Include="FMasterRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,12 @@
     <Compile Include="FMainOffice.Designer.cs">
       <DependentUpon>FMainOffice.cs</DependentUpon>
     </Compile>
+    <Compile Include="FMasterItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMasterItem.Designer.cs">
+      <DependentUpon>FMasterItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FEmployee.resx">
@@ -101,6 +119,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FMainOffice.resx">
       <DependentUpon>FMainOffice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMainReservation.resx">
+      <DependentUpon>FMainReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMasterFoodDrink.resx">
+      <DependentUpon>FMasterFoodDrink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMasterItem.resx">
+      <DependentUpon>FMasterItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FMasterRoom.resx">
       <DependentUpon>FMasterRoom.cs</DependentUpon>

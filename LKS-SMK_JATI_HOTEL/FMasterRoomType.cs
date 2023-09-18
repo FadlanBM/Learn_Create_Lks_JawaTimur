@@ -209,7 +209,7 @@ namespace LKS_SMK_JATI_HOTEL
                 errorProvider1.SetError(pictureBox1, "");
             }
 
-            if (!lanjut)
+            if (lanjut)
             {
                 return;
             }         
@@ -225,7 +225,13 @@ namespace LKS_SMK_JATI_HOTEL
                RoomType roomType = new RoomType();
                 roomType.Name=tb_name.Text;
                 roomType.Capacity =(int)up_capacity.Value;
-                roomType.RoomPrice = int.Parse( tb_priceRoom.Text.Replace(",",""));
+                int price; 
+                var sucess = int.TryParse( tb_priceRoom.Text.Replace(",",""),out price);
+                if (!sucess)
+                {
+                    MessageBox.Show("Price harus angka");
+                }
+                roomType.RoomPrice=price;   
                 roomType.Photo = nameImage;
                 File.Copy(ofd.FileName, path + nameImage);
                 dbcontext.RoomTypes.InsertOnSubmit(roomType);
