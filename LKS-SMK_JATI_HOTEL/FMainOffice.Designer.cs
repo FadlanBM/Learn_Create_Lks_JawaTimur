@@ -48,8 +48,8 @@
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
             this.lb_time = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -79,13 +79,13 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.logOutToolStripMenuItem.Text = "Log Out";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // tranToolStripMenuItem
@@ -103,7 +103,7 @@
             // 
             this.reseToolStripMenuItem.Name = "reseToolStripMenuItem";
             this.reseToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.reseToolStripMenuItem.Text = "Reservatioin";
+            this.reseToolStripMenuItem.Text = "Reservation";
             this.reseToolStripMenuItem.Click += new System.EventHandler(this.reseToolStripMenuItem_Click);
             // 
             // checkInToolStripMenuItem
@@ -135,7 +135,7 @@
             // checkInToolStripMenuItem1
             // 
             this.checkInToolStripMenuItem1.Name = "checkInToolStripMenuItem1";
-            this.checkInToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.checkInToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.checkInToolStripMenuItem1.Text = "CheckIn";
             // 
             // toolStrip1
@@ -196,6 +196,14 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // lb_time
+            // 
+            this.lb_time.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lb_time.Margin = new System.Windows.Forms.Padding(0, 1, 50, 2);
+            this.lb_time.Name = "lb_time";
+            this.lb_time.Size = new System.Drawing.Size(35, 22);
+            this.lb_time.Text = "timer";
+            // 
             // toolStripLabel6
             // 
             this.toolStripLabel6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -205,14 +213,6 @@
             this.toolStripLabel6.Size = new System.Drawing.Size(76, 22);
             this.toolStripLabel6.Text = "Front-Office";
             this.toolStripLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lb_time
-            // 
-            this.lb_time.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.lb_time.Margin = new System.Windows.Forms.Padding(0, 1, 50, 2);
-            this.lb_time.Name = "lb_time";
-            this.lb_time.Size = new System.Drawing.Size(35, 22);
-            this.lb_time.Text = "timer";
             // 
             // FMainOffice
             // 

@@ -112,6 +112,7 @@
     <Compile Include="FTestReservation.Designer.cs">
       <DependentUpon>FTestReservation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FEmployee.resx">

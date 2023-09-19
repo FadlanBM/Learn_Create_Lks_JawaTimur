@@ -16,8 +16,10 @@ namespace LKS_SMK_JATI_HOTEL
         AppDbContextDataContext dbcontext;
         DataGridViewRow row;
         string status=string.Empty;
+        private List<string> checkedData = new List<string>();
+
         public FTestReservation()
-        {
+        {        
             dbcontext = new AppDbContextDataContext();
             InitializeComponent();
         }
@@ -62,6 +64,8 @@ namespace LKS_SMK_JATI_HOTEL
                 rb_addCustomer.Checked = false;
                 tb_searchName.Enabled = true;
             }
+
+            dt_checkOut.Value=dt_checkIn.Value.AddDays(1);
         }
         private void loadDataCustomer() { 
             datagrid_customer.AllowUserToAddRows = false;
@@ -176,7 +180,13 @@ namespace LKS_SMK_JATI_HOTEL
         }
 
         private void dt_checkOut_ValueChanged(object sender, EventArgs e)
-        {
+        {                        
+            if (dt_checkIn.Value>dt_checkOut.Value)
+            {
+                MessageBox.Show("Date penginapan minimum 1 hari ");
+                dt_checkOut.Value = dt_checkIn.Value.AddDays(1);
+                return;
+            }
             var date = dt_checkOut.Value - dt_checkIn.Value;
             tb_stay.Text=date.Days.ToString() + " Days";
         }
@@ -288,6 +298,111 @@ namespace LKS_SMK_JATI_HOTEL
                 tb_price_item.Enabled = true;
                 tb_subTotal.Enabled = true;
             }
+        }
+
+        private void datagrid_customer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == datagrid_customer.Columns["ch_customer"].Index)
+            {
+
+                // Dapatkan nilai dari kolom data yang sesuai
+                object cellValueObj = datagrid_customer.Rows[e.RowIndex].Cells[1].Value;
+
+                // Periksa apakah cellValueObj tidak null sebelum mengonversi menjadi string
+                if (cellValueObj != null)
+                {
+                    string cellValue = cellValueObj.ToString();
+                    // Tambahkan data yang dicentang ke List
+                    checkedData.Add(cellValue);
+                }
+            }
+        }
+
+        private void validInput() {
+            if (tb_stay.Text.Length == 0)
+            {
+                errorProvider1.SetError(tb_stay, "Date Check In belum di isi");
+            }
+            else
+            {
+                errorProvider1.SetError(tb_stay, "");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            validInput();
+            var status = true;
+            Reservation reservation = new Reservation();
+            foreach (var checkCustomer in checkedData)
+            {
+                MessageBox.Show(checkCustomer);
+               /* try
+                {
+                    var customer = dbcontext.Customers.Where(c => c.ID == int.Parse(checkCustomer.ToString())).FirstOrDefault();
+                    if (customer == null) { MessageBox.Show("Customer tidak di temukan"); return; }
+                    reservation.DateTime = DateTime.Now;
+                    reservation.EmployeeID =1;
+                    reservation.CustomerID = customer.ID;
+                    reservation.BookingCode = getStringRan();
+                    dbcontext.Reservations.InsertOnSubmit(reservation);
+                    dbcontext.SubmitChanges();
+                    status = false;
+                }
+                catch (Exception)
+                {
+                    status = true;
+                    throw;
+                }*/
+            
+            }
+/*            foreach (DataGridViewRow roomItem in datagrid_2.Rows)
+            {
+                try
+                {
+                    var roomValid = dbcontext.Rooms.Where(rm => rm.ID == int.Parse(roomItem.Cells[0].Value.ToString())).FirstOrDefault();
+                    var roomTyValid = dbcontext.RoomTypes.Where(ry => ry.ID == roomValid.RoomTypeID).FirstOrDefault();
+                    if (roomValid == null) { MessageBox.Show("room tidak di temukan"); return; }
+                    ReservationRoom room = new ReservationRoom();
+                    room.ReservationID = reservation.ID;
+                    room.RoomID = roomValid.ID;
+                    room.StartDateTime = DateTime.Now;
+                    room.DurationNights = int.Parse(tb_stay.Text.Replace(" Days", ""));
+                    room.RoomPrice = roomTyValid.RoomPrice;
+                    room.CheckInDateTime = dt_checkIn.Value;
+                    room.CheckOutDateTime = dt_checkOut.Value;
+                    dbcontext.ReservationRooms.InsertOnSubmit(room);
+                    dbcontext.SubmitChanges();
+                    status = false;
+                }
+                catch (Exception)
+                {
+                    status = true;
+                    throw;
+                }*/
+               
+            /*}  */     
+
+        }
+
+        private string getStringRan() {
+            Random rd= new Random();
+            var num=rd.Next(2,4);
+            var random = string.Empty;
+            var i = 0;
+            do {
+                var baytes=rd.Next(48,123);
+                if ((baytes>48&&baytes<57)|| (baytes > 60 && baytes < 90)|| (baytes > 92 && baytes < 122)) { 
+                    i++;
+                    random = random + (char)baytes;
+                    if (i == num)
+                        break;
+                    {
+
+                    }
+                }
+            } while (true);
+            return random;
         }
     }
 }

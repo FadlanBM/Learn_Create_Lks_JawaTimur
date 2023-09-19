@@ -50,6 +50,7 @@ namespace LKS_SMK_JATI_HOTEL
                         this.Hide(); 
                         return;
                     }
+                    Helper.helper.idEmploy = username.ID.ToString();
                 }
                 else
                 {

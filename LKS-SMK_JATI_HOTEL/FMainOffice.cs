@@ -26,7 +26,10 @@ namespace LKS_SMK_JATI_HOTEL
 
         private void reseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FTestReservation reservation = new FTestReservation();
+            reservation.StartPosition = FormStartPosition.CenterScreen;
+            reservation.MdiParent= this;    
+            reservation.Show();
         }
     }
 }
